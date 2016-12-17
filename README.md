@@ -52,6 +52,10 @@ Long term we might consider building a queuing service saves history in a framew
 
 Replace currently UI with something more intuitive and 'pretty'.
 
+# Deployment
+
+The web application is ready for deploy to Heroku immediately. The ruby script will have to be made more robust before it is ready for production deploy (See 'Todos' section).
+
 # Potential additional features
 
 1. Ability to mark medication as 'taken'.
