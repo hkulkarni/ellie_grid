@@ -7,7 +7,7 @@ Additionally, the application sends email reminders for each medication once a d
 # Frameworks
 
 * Front-end Angular application (Single page application)
-# Bootstrap HTML/CSS
+* Bootstrap HTML/CSS
 * Ruby on Rails backend API
 * SMTP email notifications
 * Basic RestClient ruby script for notification system
