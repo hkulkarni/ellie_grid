@@ -34,6 +34,10 @@ There is currently no 'delete' function in the front end UI.
 
 Currently when you update a medication, you have to refresh the page to see that your changes have been saved. 
 
+## More robust input validations
+
+Currently the only input validation is making sure neither the time nor medication name is blank. Add more validation or a date picker to force user to provide valid input.
+
 ## Testing
 
 Determine the best testing framework for front end tests (Jasmine/Karma?).
