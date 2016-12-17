@@ -16,8 +16,8 @@
 
       self.initializeMedications = function() {
         return $http({
-          url: '/send_reminders',
-          method: 'POST'
+          url: '/read',
+          method: 'GET'
         }).then(function(response) {
           console.log("Retrieved medications");
           self.currentMedications = response.data;
