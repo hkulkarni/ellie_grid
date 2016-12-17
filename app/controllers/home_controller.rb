@@ -5,6 +5,11 @@ class HomeController < ApplicationController
   def index
   end
 
+  def read
+    medication = Medication.where(name: "Advil").first
+    render :json => JSON.parse(medication.to_json)
+  end
+
   def create
     Medication.create(name: "Advil", time: "5:00 pm", reminded_today: false)
     render status: 200, json: @controller.to_json

@@ -15,11 +15,11 @@
       self.initializeForms = function() {
         console.log("Initialized!");
         return $http({
-          url: '/create',
-          method: 'POST'
+          url: '/read',
+          method: 'GET'
         }).then(function(response) {
           console.log("medication created");
-          console.log(response);
+          console.log(response.data);
         });
       };
 
