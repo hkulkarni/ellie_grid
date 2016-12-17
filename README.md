@@ -4,6 +4,14 @@ This application allows a user to view his or her medications on any browser (mo
 
 Additionally, the application sends email reminders for each medication once a day (not yet completed, see 'Todo' section).
 
+# Frameworks
+
+* Front-end Angular application (Single page application)
+# Bootstrap HTML/CSS
+* Ruby on Rails backend API
+* SMTP email notifications
+* Basic RestClient ruby script for notification system
+
 # Reminder Engine
 
 The reminder engine is currently a ruby script that calls the 'send_reminders' endpoint in the API every 10 seconds (the API host and frequency are configurable). The endpoint determines which reminders to send, schedules the next reminder, and sends the notification via email (SMTP).
