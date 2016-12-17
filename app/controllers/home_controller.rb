@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def read
-    medication = Medication.where(name: "Advil").first
+    medication = Medication.where(name: "Advil")
     render :json => JSON.parse(medication.to_json)
   end
 

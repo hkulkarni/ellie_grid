@@ -11,6 +11,7 @@
       $http
     ) {
       var self = this;
+      self.currentMedications = [];
 
       self.initializeForms = function() {
         console.log("Initialized!");
@@ -18,8 +19,9 @@
           url: '/read',
           method: 'GET'
         }).then(function(response) {
-          console.log("medication created");
+          console.log("retrieved medications");
           console.log(response.data);
+          self.currentMedications = response.data;
         });
       };
 

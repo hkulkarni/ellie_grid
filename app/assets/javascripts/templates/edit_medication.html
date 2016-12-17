@@ -1,1 +1,9 @@
-<div> Edit_medication template </div>
+<h3>My medications</h3>
+<div class="list-group"
+     ng-repeat="medication in editMedication.currentMedications track by medication.id" >
+  <a href="#" class="list-group-item">
+    <h4 class="list-group-item-heading">{{ medication.name }}</h4>
+    <p class="list-group-item-text">Take every day at {{ medication.time }}.</p>
+    <span class="pull-right medication-item" aria-hidden="true"> Click to edit </span>
+  </a>
+</div>
