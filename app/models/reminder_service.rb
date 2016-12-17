@@ -1,12 +1,12 @@
 class ReminderService
 
-  def send_reminder
-    send if after?(last_reminder) && after?(next_reminder) && after?(time_to_take)
+  def update_reminder_record
+    update if after?(last_reminder) && after?(next_reminder) && after?(time_to_take)
   end
 
   private 
 
-  def send
+  def update
     medication = Medication.all.first
     medication.last_reminder = DateTime.now
     medication.next_reminder = time_to_take + 1.day

@@ -17,12 +17,18 @@ class HomeController < ApplicationController
   end
 
   def create
-    Medication.create(name: params[:name], time: params[:time], reminded_today: false)
+    Medication.create(
+        name: params[:name],
+        time: params[:time],
+        last_reminder: DateTime.now,
+        next_reminder: DateTime.now
+    )
     render status: 200, json: @controller.to_json
   end
 
   def send_reminders
-    ReminderService.new.send_reminder
+    ReminderMailer.send_reminder(Medication.all.first).deliver_now
+    ReminderService.new.update_reminder_record
     render status: 200, json: @controller.to_json
   end
 
