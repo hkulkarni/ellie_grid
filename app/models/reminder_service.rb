@@ -1,7 +1,16 @@
+#
+# This service is responsible for updating the last and next reminders
+# when reminders are sent for a medication. It also contains the logic
+# of whether a reminder should be sent.
+#
 class ReminderService
 
   def update_reminder_record
-    update if after?(last_reminder) && after?(next_reminder) && after?(time_to_take)
+    update if send_reminder?
+  end
+
+  def send_reminder?
+    after?(last_reminder) && after?(next_reminder) && after?(time_to_take)
   end
 
   private 

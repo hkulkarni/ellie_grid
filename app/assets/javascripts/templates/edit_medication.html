@@ -2,6 +2,8 @@
 
 <div class="list-group">
   <div>
+
+    <!-- List/Edit existing medications -->
     <a class="list-group-item"
     ng-repeat="medication in editMedication.currentMedications track by medication.id">
         <h4 class="list-group-item-heading">{{ ::medication.name }}</h4>
@@ -9,7 +11,8 @@
         <span class="pull-right medication-item" 
               aria-hidden="true"
               ng-click="editMedication.edit(medication)"> Click to edit </span>
-
+ 
+        <!-- Edit mode -->
         <div ng-show="editMedication.editing(medication)">
             <h5> Edit medication </h5>
             <input ng-model="editMedication.currentlyEditing.name"
@@ -28,6 +31,8 @@
                     ng-click="editMedication.cancelEdit()"> Cancel </button>
         </div>
     </a>
+
+    <!-- Add new medication list item -->
     <a class="list-group-item">
         <h4 class="list-group-item-heading">Add new medication</h4>
         <p class="list-group-item-text"></p>
@@ -35,6 +40,7 @@
               aria-hidden="true"
               ng-click="editMedication.createMode()"> Click to add new medication </span>
 
+        <!-- Create mode -->
         <div ng-show="editMedication.currentlyCreating">
             <h5> Add medication </h5>
             <input ng-model="editMedication.newMedication.name"

@@ -12,5 +12,5 @@ host = "http://localhost:3000"
 # Call send reminders endpoint every N seconds
 while true
   call(host)
-  sleep(5)
+  sleep(10)
 end

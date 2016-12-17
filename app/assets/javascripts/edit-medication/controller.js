@@ -1,3 +1,8 @@
+//
+// This controller facilitates the Editing and Creating of medications.
+// It makes http calls to the medication CRUD api. Delete and auto refresh sync
+// not yet supported.
+//
 (function() {
     'use strict';
     angular.module('ellieGrid')

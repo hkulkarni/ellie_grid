@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  post '/create' => 'home#create'
-  get '/read' => 'home#read'
-  post '/update' => 'home#update'
-  get '/send_reminders' => 'home#send_reminders'
+  post '/create' => 'medications#create'
+  get '/read' => 'medications#read'
+  post '/update' => 'medications#update'
+  get '/send_reminders' => 'medications#send_reminders'
 end
