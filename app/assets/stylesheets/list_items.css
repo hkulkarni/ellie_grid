@@ -1,4 +1,13 @@
 .medication-item {
     position: relative;
     bottom: 29px;
+    cursor: pointer;
+}
+
+.medication-edit-item {
+    margin-top: 5px;
+}
+
+.medication-edit-button {
+    margin-top: 5px;
 }

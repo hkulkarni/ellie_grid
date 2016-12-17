@@ -14,7 +14,7 @@
         controller: 'EditMedicationController',
         controllerAs: 'editMedication',
         link: function(scope, element, attributes, controller) {
-          controller.initializeForms();
+          controller.initializeMedications();
         }
       };
     }

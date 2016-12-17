@@ -1,9 +1,31 @@
 <h3>My medications</h3>
+
 <div class="list-group"
      ng-repeat="medication in editMedication.currentMedications track by medication.id" >
-  <a href="#" class="list-group-item">
-    <h4 class="list-group-item-heading">{{ medication.name }}</h4>
-    <p class="list-group-item-text">Take every day at {{ medication.time }}.</p>
-    <span class="pull-right medication-item" aria-hidden="true"> Click to edit </span>
-  </a>
+  <div>
+    <a class="list-group-item">
+        <h4 class="list-group-item-heading">{{ ::medication.name }}</h4>
+        <p class="list-group-item-text">Take every day at {{ ::medication.time }}.</p>
+        <span class="pull-right medication-item" 
+              aria-hidden="true"
+              ng-click="editMedication.edit(medication)"> Click to edit </span>
+
+        <div ng-show="editMedication.editing(medication)">
+            <h5> Edit medication </h5>
+            <input ng-model="editMedication.currentlyEditing.name"
+                   type="text"
+                   class="form-control medication-edit-item">
+            <input ng-model="editMedication.currentlyEditing.time"
+                   type="text"
+                   class="form-control medication-edit-item">
+            <button type="button"
+                    class="btn btn-success medication-edit-button"
+                    ng-click="editMedication.save(medication)"> Save </button>
+            <button type="button"
+                    class="btn btn-danger medication-edit-button"
+                    ng-click="editMedication.cancel()"> Cancel </button>
+        </div>
+    </a>
+  </div>
+
 </div>
