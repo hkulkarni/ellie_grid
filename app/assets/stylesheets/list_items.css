@@ -4,10 +4,16 @@
     cursor: pointer;
 }
 
+.new-medication-item {
+    position: relative;
+    bottom: 22px;
+    cursor: pointer;
+}
+
 .medication-edit-item {
     margin-top: 5px;
 }
 
 .medication-edit-button {
-    margin-top: 5px;
+    margin-top: 10px;
 }

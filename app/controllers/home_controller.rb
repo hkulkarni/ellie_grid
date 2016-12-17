@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   end
 
   def read
-    render :json => JSON.parse(medications.to_json)
+    render :json => JSON.parse(Medication.all.to_json)
   end
 
   def update

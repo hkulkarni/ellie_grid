@@ -1,9 +1,9 @@
 <h3>My medications</h3>
 
-<div class="list-group"
-     ng-repeat="medication in editMedication.currentMedications track by medication.id" >
+<div class="list-group">
   <div>
-    <a class="list-group-item">
+    <a class="list-group-item"
+    ng-repeat="medication in editMedication.currentMedications track by medication.id">
         <h4 class="list-group-item-heading">{{ ::medication.name }}</h4>
         <p class="list-group-item-text">Take every day at {{ ::medication.time }}.</p>
         <span class="pull-right medication-item" 
@@ -14,9 +14,11 @@
             <h5> Edit medication </h5>
             <input ng-model="editMedication.currentlyEditing.name"
                    type="text"
+                   placeholder="Name (e.g. 'Advil')"
                    class="form-control medication-edit-item">
             <input ng-model="editMedication.currentlyEditing.time"
                    type="text"
+                   placeholder="Time (e.g. 1:00 pm or 12:30 am)"
                    class="form-control medication-edit-item">
             <button type="button"
                     class="btn btn-success medication-edit-button"
@@ -24,6 +26,31 @@
             <button type="button"
                     class="btn btn-danger medication-edit-button"
                     ng-click="editMedication.cancelEdit()"> Cancel </button>
+        </div>
+    </a>
+    <a class="list-group-item">
+        <h4 class="list-group-item-heading">Add new medication</h4>
+        <p class="list-group-item-text"></p>
+        <span class="pull-right new-medication-item" 
+              aria-hidden="true"
+              ng-click="editMedication.createMode()"> Click to add new medication </span>
+
+        <div ng-show="editMedication.currentlyCreating">
+            <h5> Add medication </h5>
+            <input ng-model="editMedication.newMedication.name"
+                   type="text"
+                   placeholder="Name (e.g. 'Advil')"
+                   class="form-control medication-edit-item">
+            <input ng-model="editMedication.newMedication.time"
+                   type="text"
+                   placeholder="Time (e.g. 1:00 pm or 12:30 am)"
+                   class="form-control medication-edit-item">
+            <button type="button"
+                    class="btn btn-success medication-edit-button"
+                    ng-click="editMedication.create(editMedication.newMedication)"> Save </button>
+            <button type="button"
+                    class="btn btn-danger medication-edit-button"
+                    ng-click="editMedication.createMode()"> Cancel </button>
         </div>
     </a>
   </div>

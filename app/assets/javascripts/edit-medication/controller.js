@@ -13,6 +13,11 @@
       var self = this;
       self.currentMedications = [];
       self.currentlyEditing = {};
+      self.currentlyCreating = false;
+      self.newMedication = {
+        name: '',
+        time: ''
+      }
 
       self.initializeMedications = function() {
         return $http({
@@ -23,6 +28,8 @@
           self.currentMedications = response.data;
         });
       };
+
+      // Edit logic
 
       self.edit = function(medication) {
         if (self.editing(medication)) {
@@ -41,8 +48,10 @@
       };
 
       self.save = function(medication) {
-        console.log("Save medication");
-        console.log(medication);
+        if (invalidInput(medication)) {
+          console.log("Medication cannot be empty!");
+          return;
+        }
         self.cancelEdit();
         return $http({
           url: '/update',
@@ -52,6 +61,31 @@
           console.log("Updated medication information.");
         });
       };
+
+      // Create logic
+
+      self.createMode = function() {
+        return self.currentlyCreating = !self.currentlyCreating;
+      };
+
+      self.create = function(medication) {
+        if (invalidInput(medication)) {
+          console.log("Medication cannot be empty!");
+          return;
+        }
+        self.createMode();
+        return $http({
+          url: '/create',
+          method: 'POST',
+          data: angular.toJson(medication)
+        }).then(function(response) {
+          console.log("Created medication information.");
+        });
+      };
+
+      function invalidInput(medication) {
+        return medication.time === '' || medication.name === ''
+      }
 
     }
 })();
