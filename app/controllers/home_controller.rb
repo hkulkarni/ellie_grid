@@ -6,12 +6,18 @@ class HomeController < ApplicationController
   end
 
   def read
-    medication = Medication.where(name: "Advil")
-    render :json => JSON.parse(medication.to_json)
+    render :json => JSON.parse(medications.to_json)
+  end
+
+  def update
+    medication = Medication.find_by(id: params[:id])
+    medication.name = params[:name]
+    medication.time = params[:time]
+    render status: 200, json: @controller.to_json if medication.save
   end
 
   def create
-    Medication.create(name: "Advil", time: "5:00 pm", reminded_today: false)
+    Medication.create(name: params[:name], time: params[:time], reminded_today: false)
     render status: 200, json: @controller.to_json
   end
 
@@ -20,18 +26,26 @@ class HomeController < ApplicationController
     puts "after time to take? #{need_to_send}"
     puts "already_sent_today? #{already_sent_today?}"
     puts "now: #{now}"
-    puts "Sent out the reminders for #{when_to_take_meds}" if need_to_send && !already_sent_today?
+    send_reminder if need_to_send && !already_sent_today?
     render status: 200, json: @controller.to_json
   end
 
   private 
 
-  def user_service
-    UserService.new
+  def send_reminder
+    puts "Sent out the reminders for #{when_to_take_meds}"
+  end
+
+  def medications
+    Medication.all
+  end
+
+  def medication
+    medications.first
   end
 
   def when_to_take_meds
-    user_service.get_medications[:time].to_time.seconds_since_midnight
+    medication.time.to_time.seconds_since_midnight
   end
 
   def now
@@ -39,7 +53,7 @@ class HomeController < ApplicationController
   end
 
   def already_sent_today?
-    user_service.get_medications[:reminded_today]
+    medication.reminded_today
   end
 
 end

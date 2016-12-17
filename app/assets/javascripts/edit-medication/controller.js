@@ -16,18 +16,17 @@
 
       self.initializeMedications = function() {
         return $http({
-          url: '/read',
-          method: 'GET'
+          url: '/send_reminders',
+          method: 'POST'
         }).then(function(response) {
           console.log("Retrieved medications");
-          console.log(response.data);
           self.currentMedications = response.data;
         });
       };
 
       self.edit = function(medication) {
         if (self.editing(medication)) {
-          self.cancel();
+          self.cancelEdit();
         } else {
           self.currentlyEditing = medication;
         }
@@ -37,13 +36,21 @@
         return self.currentlyEditing === medication;
       };
 
-      self.cancel = function() {
+      self.cancelEdit = function() {
         return self.currentlyEditing = {};
       };
 
       self.save = function(medication) {
         console.log("Save medication");
         console.log(medication);
+        self.cancelEdit();
+        return $http({
+          url: '/update',
+          method: 'POST',
+          data: angular.toJson(medication)
+        }).then(function(response) {
+          console.log("Updated medication information.");
+        });
       };
 
     }
