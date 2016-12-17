@@ -44,4 +44,11 @@ Long term we might consider building a queuing service saves history in a framew
 
 Replace currently UI with something more intuitive and 'pretty'.
 
+# Potential additional features
+
+1. Ability to mark medication as 'taken'.
+2. Additional notification types (text, mobile push notification, etc).
+3. Increased accuracy of notifications (give us less strain on server, more robust notifications, etc).
+
+
 
