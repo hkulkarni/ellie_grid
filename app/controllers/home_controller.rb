@@ -5,6 +5,11 @@ class HomeController < ApplicationController
   def index
   end
 
+  def create
+    Medication.create(name: "Advil", time: "5:00 pm", reminded_today: false)
+    render status: 200, json: @controller.to_json
+  end
+
   def send_reminders
     need_to_send = (now - when_to_take_meds) > 0
     puts "after time to take? #{need_to_send}"

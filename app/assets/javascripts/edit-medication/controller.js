@@ -15,10 +15,10 @@
       self.initializeForms = function() {
         console.log("Initialized!");
         return $http({
-          url: '/send_reminders',
+          url: '/create',
           method: 'POST'
         }).then(function(response) {
-          console.log("reminders sent");
+          console.log("medication created");
           console.log(response);
         });
       };
